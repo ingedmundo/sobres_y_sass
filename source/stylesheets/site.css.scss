@@ -56,42 +56,25 @@ $btn-padding: 1px 2px 5px 6px;
 // Maps
 $map: (primary: black, secondary: darkgrey, alternative: gray);
 
-
-.hector {
-  color: $hector !important;
+// Operations
+p {
+  font: 10px/8px;             // Plain CSS, no division
+  $width: 1000px;
+  width: $width/2;            // Uses a variable, does division
+  width: round(1.5)/2;        // Uses a function, does division
+  height: (500px/2);          // Uses parentheses, does division
+  margin-left: 5px + 8px/2px; // Uses +, does division
+  font: (italic bold 10px/8px); // In a list, parentheses don't count
 }
 
-@each $name, $color in $map {
-  .c-#{$name} {
-    color: $color;
-  }
+p {
+  color: #010203 * 2;
 }
 
-%btn {
-  background-color: $primary-color;
-  color: white;
-  border-color: $primary-color;
-  padding: $btn-padding;
-  font-size: $btn-font-size;
+p {
+  cursor: e + -resize;
 }
 
-.btn {
-  @extend %btn;
+p {
+  width: 1em + (2em * 3);
 }
-
-.btn-blue {
-  @extend %btn;
-
-  &:hover {
-    background-color: darkgray;
-  }
-}
-
-.hello-world {
-  padding: $padding3;
-
-  &:after {
-    content: $hello;
-  }
-}
-
