@@ -39,11 +39,39 @@ $primary-color: black;
 $btn-font-size: 18px;
 
 
+// Data Types
+// Numbers
+$padding3: 3px;
+// Strings
+$hello: "Hello World";
+// Colors
+$hector: red;
+// Booleans
+$verdad: true;
+$falso: false;
+// Null
+$nope: null;
+// Lists
+$btn-padding: 1px 2px 5px 6px;
+// Maps
+$map: (primary: black, secondary: darkgrey, alternative: gray);
+
+
+.hector {
+  color: $hector !important;
+}
+
+@each $name, $color in $map {
+  .c-#{$name} {
+    color: $color;
+  }
+}
+
 %btn {
   background-color: $primary-color;
   color: white;
   border-color: $primary-color;
-  padding: 15px 35px;
+  padding: $btn-padding;
   font-size: $btn-font-size;
 }
 
@@ -59,4 +87,11 @@ $btn-font-size: 18px;
   }
 }
 
+.hello-world {
+  padding: $padding3;
+
+  &:after {
+    content: $hello;
+  }
+}
 
