@@ -9,11 +9,49 @@ body {
   text-align: center;
 }
 
-a {
-  color: rgba(#000, 0.7);
 
-  &:focus,
-  &:hover {
-    color: rgba(#000, 0.6);
+main {
+  .nested-rules {
+    .section-title {
+      color: crimson;
+
+      &-yellow {
+        color: yellow;
+      }
+    }
+
+    p {
+      font-size: 80%;
+    }
+
+    a {
+      color: rgba(#000, 0.7);
+
+      &:hover {
+        color: crimson;
+      }
+    }
   }
 }
+
+%btn {
+  background-color: black;
+  color: white;
+  border-color: black;
+  padding: 15px 35px;
+  font-size: 18px;
+}
+
+.btn {
+  @extend %btn;
+}
+
+.btn-blue {
+  @extend %btn;
+
+  &:hover {
+    background-color: darkgray;
+  }
+}
+
+
