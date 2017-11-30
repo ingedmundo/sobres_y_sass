@@ -34,22 +34,19 @@ main {
   }
 }
 
-/* This comment is
- * several lines long.
- * since it uses the CSS comment syntax,
- * it will appear in the CSS output. */
+// Variables
+$primary-color: black;
+$btn-font-size: 18px;
+
 
 %btn {
-  background-color: black;
+  background-color: $primary-color;
   color: white;
-  border-color: black;
+  border-color: $primary-color;
   padding: 15px 35px;
-  font-size: 18px;
+  font-size: $btn-font-size;
 }
 
-// These comments are only one line long each.
-// They won't appear in the CSS output,
-// since they use the single-line comment syntax.
 .btn {
   @extend %btn;
 }
