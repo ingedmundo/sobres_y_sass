@@ -1,5 +1,4 @@
 body {
-  background-color: #fbc547;
   color: #333;
   font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Avenir",
     "Segoe UI", "Lucida Grande", "Helvetica Neue", "Helvetica", "Fira Sans",
@@ -9,72 +8,97 @@ body {
   text-align: center;
 }
 
+$background-color: orange;
 
-main {
-  .nested-rules {
-    .section-title {
-      color: crimson;
+.box {
+  border: 1px solid black;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  background-color: $background-color;
 
-      &-yellow {
-        color: yellow;
-      }
-    }
+}
 
-    p {
-      font-size: 80%;
-    }
+// Functions
+// rgba
+.blue {
+  &-100 {
+    background-color: rgba(blue, 1);
+  }
 
-    a {
-      color: rgba(#000, 0.7);
+  &-80 {
+    background-color: rgba(blue, .8);
+  }
 
-      &:hover {
-        color: crimson;
-      }
-    }
+  &-60 {
+    background-color: rgba(blue, .6);
+  }
+
+  &-40 {
+    background-color: rgba(blue, .4);
   }
 }
 
-// Variables
-$primary-color: black;
-$btn-font-size: 18px;
 
+.box {
+  // lighten & darken
+  &.light {
+    background-color: lighten($background-color, 30);
+  }
 
-// Data Types
-// Numbers
-$padding3: 3px;
-// Strings
-$hello: "Hello World";
-// Colors
-$hector: red;
-// Booleans
-$verdad: true;
-$falso: false;
-// Null
-$nope: null;
-// Lists
-$btn-padding: 1px 2px 5px 6px;
-// Maps
-$map: (primary: black, secondary: darkgrey, alternative: gray);
+  &.dark {
+    background-color: darken($background-color, 30);
+  }
 
-// Operations
-p {
-  font: 10px/8px;             // Plain CSS, no division
-  $width: 1000px;
-  width: $width/2;            // Uses a variable, does division
-  width: round(1.5)/2;        // Uses a function, does division
-  height: (500px/2);          // Uses parentheses, does division
-  margin-left: 5px + 8px/2px; // Uses +, does division
-  font: (italic bold 10px/8px); // In a list, parentheses don't count
+  // color saturation
+  &.desaturated {
+    background-color: desaturate($background-color, 60);
+  }
+
+  // color complement
+  &.complement {
+    background-color: complement($background-color);
+  }
 }
 
-p {
-  color: #010203 * 2;
+// List Functions
+$box-margins: 10px 15px 10px 16px;
+$box-margin-top: nth($box-margins, 1);
+$box-margin-right: nth($box-margins, 2);
+$box-margin-bottom: nth($box-margins, 3);
+$box-margin-left: nth($box-margins, 4);
+
+.box-with-margin {
+  margin-top: $box-margin-top;
+  margin-right: $box-margin-right;
+  margin-bottom: $box-margin-bottom;
+  margin-left: $box-margin-left;
 }
 
-p {
-  cursor: e + -resize;
+
+// Map function
+$colors: (primary: crimson, secondary: orange, alternative: yellow);
+
+.box-primary {
+  background-color: map-get($colors, primary);
 }
 
-p {
-  width: 1em + (2em * 3);
+// Misc
+$large: 150px;
+$small: 25px;
+
+.box {
+  &.large {
+    $size:  $large;
+    width: $size;
+    height: $size;
+    border-radius: if($size > 100, 15px, 0);
+  }
+
+  &.small {
+    $size: $small;
+    width: $size;
+    height: $size;
+    border-radius: if($size > 50, 15px, 0);
+  }
 }
