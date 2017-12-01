@@ -1,6 +1,7 @@
 @import 'box';
 @import 'functions_partial.scss';
 @import 'typography';
+@import 'mixins';
 
 body {
   color: #333;
@@ -12,3 +13,14 @@ body {
   text-align: center;
 }
 
+.page-title {
+  @include large-text;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+@include apply-to-ie6-only {
+  #logo {
+    background-image: url(/logo.gif);
+  }
+}
