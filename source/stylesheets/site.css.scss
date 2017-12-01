@@ -1,3 +1,7 @@
+@import 'box';
+@import 'functions_partial.scss';
+@import 'typography';
+
 body {
   color: #333;
   font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Avenir",
@@ -8,99 +12,3 @@ body {
   text-align: center;
 }
 
-$background-color: orange;
-$background-color: purple !default;
-$default-size: 50px !default;
-
-.box {
-  border: 1px solid black;
-  width: $default-size;
-  height: $default-size;
-  display: inline-block;
-  background-color: $background-color;
-
-}
-
-// Functions
-// rgba
-.blue {
-  &-100 {
-    background-color: rgba(blue, 1);
-  }
-
-  &-80 {
-    background-color: rgba(blue, .8);
-  }
-
-  &-60 {
-    background-color: rgba(blue, .6);
-  }
-
-  &-40 {
-    background-color: rgba(blue, .4);
-  }
-}
-
-
-.box {
-  // lighten & darken
-  &.light {
-    background-color: lighten($background-color, 30);
-  }
-
-  &.dark {
-    background-color: darken($background-color, 30);
-  }
-
-  // color saturation
-  &.desaturated {
-    background-color: desaturate($background-color, 60);
-  }
-
-  // color complement
-  &.complement {
-    background-color: complement($background-color);
-  }
-}
-
-// List Functions
-$box-margins: 10px 15px 10px 16px;
-$box-margin-top: nth($box-margins, 1);
-$box-margin-right: nth($box-margins, 2);
-$box-margin-bottom: nth($box-margins, 3);
-$box-margin-left: nth($box-margins, 4);
-
-.box-with-margin {
-  margin-top: $box-margin-top;
-  margin-right: $box-margin-right;
-  margin-bottom: $box-margin-bottom;
-  margin-left: $box-margin-left;
-}
-
-
-// Map function
-$colors: (primary: crimson, secondary: orange, alternative: yellow);
-
-.box-primary {
-  background-color: map-get($colors, primary);
-}
-
-// Misc
-$large: 150px;
-$small: 25px;
-
-.box {
-  &.large {
-    $size:  $large;
-    width: $size;
-    height: $size;
-    border-radius: if($size > 100, 15px, 0);
-  }
-
-  &.small {
-    $size: $small;
-    width: $size;
-    height: $size;
-    border-radius: if($size > 50, 15px, 0);
-  }
-}
